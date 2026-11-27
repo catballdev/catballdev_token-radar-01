@@ -1,0 +1,29 @@
+{
+  "owner": "catballdev",
+  "project": "token-launch-radar",
+  "model_version": "radar-2-category-bonus",
+  "board_size": 226,
+  "watchlist_size": 40,
+  "early_size": 186,
+  "live_size": 24,
+  "categories": [
+    "Risk Curators", "RWA", "Onchain Capital Allocator", "Basis Trading",
+    "Lending", "Chain", "Yield", "Restaking", "Dexs", "CeDeFi",
+    "Insurance", "Payments", "Governance Incentives", "Staking Pool",
+    "Stablecoin Wrapper", "Collateral Markets", "CDP", "Dual-Token Stablecoin",
+    "Indexes", "Liquid Restaking", "Liquid Staking", "Liquidity Manager",
+    "NFT Marketplace", "Options", "Options Vault", "Launchpad", "Predict Market",
+    "Privacy", "Reserve Currency", "Restaked BTC", "Token Locker",
+    "Uncollateralized Lending", "Algo-Stables", "Anchor BTC", "AI Agents",
+    "Algo-Stables", "Bridge", "Crypto Card Issuer", "Cross Chain Bridge",
+    "Decentralized AI", "Decentralized BTC", "Derivatives", "DOR",
+    "Decentralized BTC", "Governance Incentives", "Indexes", "Interest Rate Derivatives",
+    "Leveraged Farming", "Liquidity Manager", "NFT Marketplace", "OTC Marketplace",
+    "Payments", "Privacy", "RWA", "Reserve Currency", "Restaking", "Risk Curators",
+    "Stablecoin Issuer", "Staking Pool", "Synthetics", "Token Locker", "Uncollateralized Lending",
+    "Yield", "Yield Aggregator"
+  ],
+  "screenshot_count": 3,
+  "total_protocols": 758,
+  "floor_usd": 50000000
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Launch Radar</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="radar-container">
+        <header class="radar-header">
+            <h1>Token Launch Radar</h1>
+            <div class="radar-meta">
+                <span class="meta-item">As of: <strong id="as-of">2026-11-14</strong></span>
+                <span class="meta-item">Model: <strong id="model-version">radar-2-category-bonus</strong></span>
+                <span class="meta-item">Floor: <strong id="floor">50M</strong> USDC</span>
+            </div>
+        </header>
+
+        <section class="controls-section">
+            <div class="filter-controls">
+                <select id="category-filter" class="filter-select">
+                    <option value="">All Categories</option>
+                </select>
+                <select id="confidence-filter" class="filter-select">
+                    <option value="">All Confidence Levels</option>
+                    <option value="A">Grade A</option>
+                    <option value="B">Grade B</option>
+                    <option value="C">Grade C</option>
+                    <option value="D">Grade D</option>
+                </select>
+                <button id="reset-filters" class="reset-btn">Reset</button>
+            </div>
+            <div class="summary-stats">
+                <span class="stat-item"><strong id="total-rows">0</strong> protocols</span>
+                <span class="stat-item"><strong id="early-count">0</strong> early picks</span>
+                <span class="stat-item"><strong id="live-count">0</strong> live tokens</span>
+            </div>
+        </section>
+
+        <section class="table-section">
+            <table id="radar-table" class="radar-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Protocol</th>
+                        <th>Category</th>
+                        <th>Chains</th>
+                        <th>7d Change</th>
+                        <th>TVL</th>
+                        <th>Implied Value</th>
+                        <th>Confidence</th>
+                    </tr>
+                </thead>
+                <tbody id="radar-tbody">
+                </tbody>
+            </table>
+        </section>
+
+        <section class="live-section">
+            <h2>Live Tokens</h2>
+            <table id="live-table" class="live-table">
+                <thead>
+                    <tr>
+                        <th>Protocol</th>
+                        <th>Category</th>
+                        <th>TVL</th>
+                        <th>Market Cap</th>
+                        <th>7d Change</th>
+                    </tr>
+                </thead>
+                <tbody id="live-tbody">
+                </tbody>
+            </table>
+        </section>
+
+        <section id="detail-view" class="detail-view hidden">
+            <div class="detail-header">
+                <button id="close-detail" class="close-btn">&times;</button>
+                <h2 id="detail-name">Protocol Detail</h2>
+            </div>
+            <div class="detail-grid">
+                <div class="detail-card">
+                    <h3>Protocol Info</h3>
+                    <p><strong>Slug:</strong> <span id="detail-slug">-</span></p>
+                    <p><strong>Category:</strong> <span id="detail-category">-</span></p>
+                    <p><strong>Chains:</strong> <span id="detail-chains">-</span></p>
+                    <p><strong>TVL:</strong> <span id="detail-tvl">-</span></p>
+                    <p><strong>Age:</strong> <span id="detail-age">-</span></p>
+                    <p><strong>7d Change:</strong> <span id="detail-change">-</span></p>
+                </div>
+                <div class="detail-card">
+                    <h3>Valuation</h3>
+                    <p><strong>Implied Value:</strong> <span id="detail-implied">-</span></p>
+                    <p><strong>Market Cap:</strong> <span id="detail-mcap">-</span></p>
+                </div>
+                <div class="detail-card">
+                    <h3>Scoring Model</h3>
+                    <p><strong>Category Multiplier:</strong> <span id="detail-cat-mult">-</span>x</p>
+                    <p><strong>Growth Multiplier:</strong> <span id="detail-growth-mult">-</span>x</p>
+                    <p><strong>Maturity Multiplier:</strong> <span id="detail-maturity-mult">-</span>x</p>
+                    <p><strong>Chain Bonus:</strong> +<span id="detail-chain-bonus">-</span></p>
+                    <p><strong>Confidence:</strong> <span id="detail-conf">-</span></p>
+                </div>
+                <div class="detail-card">
+                    <h3>Farm Plan</h3>
+                    <ul id="detail-steps"></ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
