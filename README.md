@@ -11,7 +11,7 @@ The scoring model uses category-aware multipliers, chain breadth bonuses, and co
 - **Growth momentum** with acceleration term for strong performers
 - **Maturity/age factor** rewarding established protocols
 - **Chain diversity bonus** for protocols on multiple chains
-- **Confidence grades** (A-D) based on data quality
+- **Confidence grades** (A-D) based on data quality, with penalties for missing 7d change data
 
 Model version: `radar-2-category-bonus`
 

@@ -44,6 +44,7 @@ export interface ModelConstants {
   unknown_age_days: number;
   chain_bonus_weight: number;
   max_chains: number;
+  chain_diminishing_rate: number;
   confidence_threshold: number;
 }
 
@@ -58,6 +59,7 @@ export const MODEL: ModelConstants = {
   unknown_age_days: 365,
   chain_bonus_weight: 0.15,
   max_chains: 10,
+  chain_diminishing_rate: 0.4,
   confidence_threshold: 0.7,
 };
 
@@ -235,8 +237,9 @@ function calculateConfidence(row: { tvl_usd: number; change_7d: number | null; a
   else if (row.tvl_usd >= 10_000_000) score += 0.2;
   else if (row.tvl_usd >= 1_000_000) score += 0.1;
   
-  // Growth report quality
+  // Growth report quality - missing momentum data is penalized
   if (row.change_7d !== null) score += 0.1;
+  else score -= 0.1; // Unverified momentum = more cautious
   
   // Age quality
   if (row.age_days !== null && row.age_days >= 30) score += 0.1;
@@ -244,7 +247,7 @@ function calculateConfidence(row: { tvl_usd: number; change_7d: number | null; a
   // Chain diversity (more chains usually means more established)
   if (row.chains.length >= 5) score += 0.05;
   
-  return Math.min(1.0, score);
+  return Math.min(1.0, Math.max(0, score));
 }
 
 /** Get confidence letter grade */
@@ -289,8 +292,9 @@ export function impliedValue(
   const ageForModel = age ?? model.unknown_age_days;
   const maturityMult = model.maturity_floor + (Math.min(Math.max(ageForModel, 0), model.maturity_days) / model.maturity_days) * model.maturity_range;
   
-  // Chain breadth bonus - protocols on more chains are more valuable
-  const chainBonus = model.chain_bonus_weight * Math.min(protocol.chains.length / model.max_chains, 1);
+  // Chain breadth bonus - diminishing returns: first chain adds 0, each additional adds progressively less
+  const chainCount = Math.min(protocol.chains.length, model.max_chains);
+  const chainBonus = model.chain_bonus_weight * (1 - Math.pow(1 - model.chain_diminishing_rate, Math.max(0, chainCount - 1)));
   
   // Category multiplier
   const catMult = categoryMultiplier(protocol.category);
