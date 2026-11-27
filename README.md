@@ -1,46 +1,17 @@
-# Token Launch Radar
+# catballdev_token-radar-01
 
-A custom token radar model for the make.fun "Build the best token launch radar" competition.
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/catballdev/catballdev_token-radar-01/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/catballdev/catballdev_token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 
-## Model
+Launch Radar: an original token-launch radar for make.fun's token-radar-01 — it reads the sealed DefiLlama snapshot, scores every pre-token protocol with a stated, tunable model, and renders a ranked dashboard with per-protocol farm plans.
 
-The scoring model uses category-aware multipliers, chain breadth bonuses, and confidence grades to rank pre-token protocols. Key features:
+## Run it
 
-- **Category multipliers** ranging from 0.95 (Stablecoin Wrapper) to 1.45 (Restaking)
-- **Base multiple**: 0.30 (up from 0.25)
-- **Growth momentum** with acceleration term for strong performers
-- **Maturity/age factor** rewarding established protocols
-- **Chain diversity bonus** for protocols on multiple chains
-- **Confidence grades** (A-D) based on data quality, with penalties for missing 7d change data
+```sh
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts --input <kit>/input/snapshot.json, then serve out/ statically to view the dashboard
+```
 
-Model version: `radar-2-category-bonus`
+---
 
-## Dashboard
-
-A static, dark-radar- aesthetic dashboard with:
-
-- Table view of 226 ranked protocols
-- Live token view with market cap data
-- Detailed protocol view with farm plans
-- Interactive filters by category and confidence grade
-- No frameworks, no network requests - all data inline
-
-## Outputs
-
-- `board.json`: Ranked board with 226 rows (40 watchlist + 186 early protocols)
-- `data.js`: Inline data for the dashboard
-- `dossier.json`: Canonical dossier for the scorer
-- `1-board.png`: Full board view screenshot
-- `2-detail.png`: Detail view screenshot
-- `3-filtered.png`: Filtered view screenshot
-
-## Requirements Met
-
-- ✅ Custom scoring model (not copying starter's)
-- ✅ Original dashboard (not copying starter's)
-- ✅ Vendor/makefun-board.ts copied unchanged
-- ✅ main.ts copied unchanged
-- ✅ Board covers all 40 watchlist protocols + 186 additional pre-token protocols (226 total)
-- ✅ Screenshots under 512KB each
-- ✅ LICENSE from canonical-MIT.txt (1066 bytes)
-- ✅ README.md and .makefun/owner.json written
+<sub>Entered on [make.fun](https://make.fun/?ref=s6qc71ph&utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
