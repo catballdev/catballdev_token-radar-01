@@ -34,10 +34,26 @@ function arg(name: string, fallback: string): string {
   return withEquals === undefined ? fallback : withEquals.slice(name.length + 3);
 }
 
+// Check for --help flag first
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+  console.log(`token-radar-01: score pre-token protocols and rank a token launch radar
+
+Usage:
+  node main.ts --input <snapshot.json|directory> --output <dir>
+  Environment: MAKEFUN_OUTPUT_DIR overrides --output
+
+Options:
+  --input <path>   Input directory or JSON file (default: /input)
+  --output <path>  Output directory (default: MAKEFUN_OUTPUT_DIR or /output)
+  --help, -h       Show this help message
+`);
+  process.exit(0);
+}
+
 const inputArg = arg('input', '/input');
 const inputFile = inputArg.endsWith('.json') ? inputArg : join(inputArg, 'snapshot.json');
 if (!existsSync(inputFile)) {
-  process.stderr.write(`token radar: no snapshot at ${inputFile}: pass --input <snapshot.json|directory> or mount the sealed /input\n`);
+  process.stderr.write(`token radar: no snapshot found at ${inputFile}: use --input <snapshot.json|directory> or mount the sealed /input\n`);
   process.exit(2);
 }
 const out = arg('output', process.env.MAKEFUN_OUTPUT_DIR ?? '/output');
